@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Welcome Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background: #f4f4f4;
+            padding: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        img {
+            max-width: 300px;
+            margin: 20px 0;
+            border-radius: 10px;
+        }
+        .buttons, .search-form {
+            margin-top: 30px;
+        }
+        input[type="text"], button {
+            padding: 10px;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .buttons {
+            margin-top: 30px;
+        }
+        .buttons a {
+            display: inline-block;
+            text-decoration: none;
+            background-color: #007bff;
+            color: white;
+            padding: 12px 25px;
+            margin: 5px;
+            border-radius: 5px;
+            transition: background-color 0.2s ease;
+        }
+        .buttons a:hover {
+            background-color: #0056b3;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h1>Hello, welcome to the game portal!</h1>
+    <img src="https://via.placeholder.com/300x200.png?text=Game+Heatmap" alt="Sample Image">
+
+    <div class="buttons">
+        <a href="{{ url_for('auth.register') }}">Register</a>
+    </div>
+
+    <div class="search-form">
+        <h2>Search Your Game Results</h2>
+        <form method="GET" action="{{ url_for('results.search') }}">
+            <input type="text" name="email" placeholder="Enter your email" required>
+            <button type="submit">Search</button>
+        </form>
+    </div>
+</body>
+</html>

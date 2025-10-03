@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Game Results</title>
+</head>
+<body>
+    <h1>Search Your Game Results</h1>
+    <form method="GET" action="{{ url_for('results.search') }}">
+        <input type="text" name="email" placeholder="Enter your email" required>
+        <button type="submit">Search</button>
+    </form>
+
+    {% if player %}
+        <h2>Results for {{ player.FirstName }}</h2>
+        <ul>
+        {% for g in games %}
+            <li>Score: {{ g.Score_Team_1 }} - {{ g.Score_Team_2 }} <br>
+                {% for link in g.player_links %}
+                    {% if link.player.id == player.id %}
+                        Slot: {{ link.slot }}
+                    {% endif %}
+                {% endfor %}
+                
+                 <img src="{{ game.heatmap.Heatmap_Url }}" alt="Heatmap for Game {{ game.GameId }}" width="300">
+            </li>
+        {% endfor %}
+        </ul>
+    {% else%}
+        <p>No results found for "{{ email }}".</p>
+    {% endif %}
+</body>
+</html>

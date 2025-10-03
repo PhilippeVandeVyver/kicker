@@ -1,0 +1,19 @@
+# Ignore any folder containing 'dataset'
+**/*dataset*/
+
+# Ignore all .zip files
+*.zip
+
+# Ignore 'frames' folder anywhere
+**/*frames*/
+
+# Ignore 'images' folder anywhere
+**/*images*/
+
+# Ignore labels folder
+
+**/labels/
+
+# Ignore videos folder
+
+**/videos/
