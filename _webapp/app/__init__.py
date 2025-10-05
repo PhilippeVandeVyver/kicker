@@ -31,20 +31,8 @@ def create_app():
 
     # Import blueprints
     from .auth import auth_bp
-    from .results import results_bp
-    from .admin import admin_bp
     from .routes import main_bp
-    from .video import video_bp
     app.register_blueprint(main_bp)
-    app.register_blueprint(video_bp)
-    app.register_blueprint(admin_bp)
     app.register_blueprint(auth_bp)
-    app.register_blueprint(results_bp)
-
-    # Start background worker
-    from .stream_worker import StreamWorker
-    stream_worker = StreamWorker(app,rtmp_url="rtmp://192.168.151.16:1935/live/stream")
-    stream_worker.start()
-    app.stream_worker = stream_worker
 
     return app
