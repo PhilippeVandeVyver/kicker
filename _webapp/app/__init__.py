@@ -4,6 +4,7 @@ from flask_login import LoginManager
 import os
 import urllib.parse
 from dotenv import load_dotenv
+load_dotenv()
 
 db = SQLAlchemy()
 login_manager = LoginManager()
