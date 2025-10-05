@@ -2,9 +2,6 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 import os
 import urllib.parse
-from dotenv import load_dotenv
-load_dotenv()
-
 db = SQLAlchemy()
 
 
@@ -27,7 +24,7 @@ def create_app():
         f"Server=tcp:{server}.database.windows.net,1433;"
         f"Database={database};"
         f"Uid={username};"
-        f"Pwd={_odbc_brace(password)};"
+        f"Pwd={password};"
         "Encrypt=yes;TrustServerCertificate=no;"
         "Connection Timeout=15"
     )

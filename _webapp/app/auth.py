@@ -14,8 +14,7 @@ def register():
 
         player = Player.query.filter_by(Email=email).first()
         if player:
-            flash("Email already exists")
-            return redirect(url_for("auth.register"))
+            return redirect(url_for("main.index",emailexists = True))
 
         new_player = Player(
             FirstName=firstname,
@@ -26,7 +25,7 @@ def register():
         db.session.add(new_player)
         db.session.commit()
         flash("Account created!")
-        return redirect(url_for("main.index"))
+        return redirect(url_for("main.registered_check"))
 
-    return render_template("register.html")
+    return redirect(url_for("main.index",emailexists = False))
 

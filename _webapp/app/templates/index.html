@@ -68,6 +68,11 @@
             <input type="text" name="company" placeholder="company" required>
             <button type="submit">Register</button>
         </form>
+        {%if emailexists%}
+            <h2 style="color:red">Email already registered!</h2>
+         {%endif%}   
     </div>
+    
+        
 </body>
 </html>
