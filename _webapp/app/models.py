@@ -1,5 +1,4 @@
-from . import db, login_manager
-from flask_login import UserMixin
+from . import db
 from sqlalchemy.orm import relationship
 import datetime
 
@@ -15,13 +14,6 @@ class GamePlayer(db.Model):
     player = db.relationship("Player", back_populates="game_links")
     game = db.relationship("Game", back_populates="player_links")
 
-class Admins(UserMixin,db.Model):
-    __tablename__ = "Admins"
-    AdminID  = db.Column(db.Integer, primary_key = True)
-    Email = db.Column(db.String(255), unique=True, nullable=False)
-    PasswordHash = db.Column(db.String(255), nullable=False)
-    def get_id(self):
-        return str(self.AdminID)
 
 class Player(db.Model):
     __tablename__ = "Player"
@@ -40,9 +32,6 @@ class Player(db.Model):
         return [link.game for link in self.game_links]
 
 
-@login_manager.user_loader
-def load_user(admin_id):
-    return Admins.query.get(int(admin_id))
 
 class Game(db.Model):
     __tablename__ = "Game"

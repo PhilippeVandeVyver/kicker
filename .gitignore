@@ -17,3 +17,7 @@
 # Ignore videos folder
 
 **/videos/
+
+**/kicker2/
+
+**/__pycache__/
